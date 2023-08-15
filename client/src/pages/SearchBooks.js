@@ -90,25 +90,25 @@ const SearchBooks = () => {
       <div className="text-light bg-dark p-5">
         <Container>
           <h1>Search for Books!</h1>
-          <Form onSubmit={handleFormSubmit}>
-            <Form.Row>
-              <Col xs={12} md={8}>
-                <Form.Control
+          <form onSubmit={handleFormSubmit}>
+            <div className="row">
+              <div className="col-xs-12 col-md-8">
+                <input
                   name='searchInput'
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
                   type='text'
-                  size='lg'
+                  className='form-control form-control-lg'
                   placeholder='Search for a book'
                 />
-              </Col>
-              <Col xs={12} md={4}>
-                <Button type='submit' variant='success' size='lg'>
+              </div>
+              <div className="col-xs-12 col-md-4">
+                <button type='submit' className='btn btn-success btn-lg'>
                   Submit Search
-                </Button>
-              </Col>
-            </Form.Row>
-          </Form>
+                </button>
+              </div>
+            </div>
+          </form>
         </Container>
       </div>
 
@@ -119,9 +119,9 @@ const SearchBooks = () => {
             : 'Search for a book to begin'}
         </h2>
         <Row>
-          {searchedBooks.map((book) => {
+          {searchedBooks.map((book, index) => {
             return (
-              <Col md="4">
+              <Col md="4" key={index}>
                 <Card key={book.bookId} border='dark'>
                   {book.image ? (
                     <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' />
@@ -150,5 +150,6 @@ const SearchBooks = () => {
     </>
   );
 };
+
 
 export default SearchBooks;
